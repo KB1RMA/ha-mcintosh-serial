@@ -1141,7 +1141,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "mcintosh-serial", specifier = "==0.2.0" }]
+requires-dist = [{ name = "mcintosh-serial", specifier = "==0.3.0" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -1554,14 +1554,14 @@ wheels = [
 
 [[package]]
 name = "mcintosh-serial"
-version = "0.2.0"
+version = "0.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "serialx" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/80/4e/eaec61332b9b295c4b7800a6593a0ca5ec76f762c42233331c878428c965/mcintosh_serial-0.2.0.tar.gz", hash = "sha256:7b4242543a178f61a901d2e166295d843a8df1995a22fae8ddf68462f2e41dfa", size = 16332, upload-time = "2026-11-17T02:26:16.283Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f6/09/e8256e854bcd641467b80e3bdea6837f6ab7bba320bacdaddeeea98a8b9c/mcintosh_serial-0.3.0.tar.gz", hash = "sha256:1094213f56a7408672b56ddd5a447d7151f6b77f4a605a89a4b7f24526a98cdd", size = 44811, upload-time = "2026-11-17T03:23:05.533Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/db/f7/7e91e6bb52b8b92b1988a8e371bcc869c7b824069052c9d21fad47aeedb8/mcintosh_serial-0.2.0-py3-none-any.whl", hash = "sha256:749e796aad59b954a5d97737e096740b72f290f79abce94adef127d6bf53be31", size = 14519, upload-time = "2026-11-17T02:26:14.882Z" },
+    { url = "https://files.pythonhosted.org/packages/f3/1e/b6ccf12772e48621663533dedac9f0f026653a4acdc5a030eeec6e3174c4/mcintosh_serial-0.3.0-py3-none-any.whl", hash = "sha256:3ebd1787c919d69ac26db6a272d53f89cf776f8b62394ab54eb2ea952bed8f85", size = 46193, upload-time = "2026-11-17T03:23:04.082Z" },
 ]
 
 [[package]]
