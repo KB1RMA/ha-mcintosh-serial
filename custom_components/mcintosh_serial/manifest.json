@@ -1,6 +1,9 @@
 {
   "domain": "mcintosh_serial",
   "name": "McIntosh (serial)",
+  "after_dependencies": [
+    "esphome"
+  ],
   "codeowners": [
     "@KB1RMA"
   ],
@@ -11,7 +14,7 @@
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/KB1RMA/ha-mcintosh-serial/issues",
   "requirements": [
-    "mcintosh-serial==0.1.0"
+    "mcintosh-serial==0.2.0"
   ],
   "version": "0.0.0"
 }

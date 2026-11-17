@@ -5,7 +5,7 @@ description = "Home Assistant custom integration for McIntosh receivers controll
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.14.2"
-dependencies = ["mcintosh-serial==0.1.0"]
+dependencies = ["mcintosh-serial==0.2.0"]
 
 [dependency-groups]
 dev = [

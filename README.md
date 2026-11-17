@@ -35,10 +35,17 @@ One `media_player` for the main zone:
 ## Requirements
 
 - Home Assistant 2026.10 or later.
-- A serial connection from the Home Assistant host to the receiver's RS232 port: a USB-to-serial adapter on
-  that host, or a network serial server (use a pyserial URL such as `socket://host:port`). On an MX119 the
-  port is a DB9 (pin 2 TXD, pin 3 RXD, pin 5 ground) at 9600 baud. When Home Assistant runs in a container,
-  the serial device has to be passed through to it.
+- A serial connection from Home Assistant to the receiver's RS-232 port. On an MX119 the port is a DB9
+  (pin 2 TXD, pin 3 RXD, pin 5 ground) at 9600 baud. Either:
+  - **A Home Assistant Connect AUX-2** (or any ESPHome device with a
+    [serial proxy](https://esphome.io/components/serial_proxy/)). Its RS-232 ports appear in the serial port
+    list under "Serial proxies", so nothing has to be plugged into the Home Assistant host. Use RS-232 Port 1
+    or 2, never the 3.5 mm audio output. Each port has a TX/RX switch on the underside; if the receiver does
+    not answer, try the other position. The stock firmware runs the ports at 9600 baud.
+  - **A USB-to-serial adapter** on the Home Assistant host. When Home Assistant runs in a container, pass
+    the device through to it and pick it by its `/dev/serial/by-id/...` path.
+  - **A network serial server** (`ser2net`, `socat`, ...), entered manually as `socket://host:port`. The baud
+    rate is then set on the server.
 
 ## Installation
 
@@ -47,9 +54,15 @@ restart Home Assistant.
 
 ## Setup
 
-Add the integration from Settings → Devices & services, then enter the serial device path (for example
-`/dev/ttyUSB0`) or URL and the baud rate. The integration connects, enables RS232 control on the receiver if
-needed and reads its state.
+Add the integration from Settings → Devices & services and pick the serial port the receiver is connected to
+(the AUX-2's RS-232 port, a USB adapter, or enter a URL manually). Leave the baud rate at 9600 for an MX119.
+The integration connects, enables RS-232 control on the receiver if needed and reads its state.
+
+### Using it with Music Assistant
+
+In Music Assistant, expose the media player through the Home Assistant plugin, then open the player that feeds
+the receiver, go to its Player controls and choose this entity for power, volume and mute. Music Assistant can
+then wake the receiver and set its volume when playback starts.
 
 ## Development
 

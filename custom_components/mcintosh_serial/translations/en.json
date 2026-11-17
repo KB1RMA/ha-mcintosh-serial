@@ -3,9 +3,9 @@
     "step": {
       "user": {
         "title": "McIntosh receiver",
-        "description": "Serial device path (for example /dev/ttyUSB0) or a pyserial URL such as socket://host:port. The MX119 uses 9600 baud.",
+        "description": "Choose the serial port the receiver is connected to: a USB adapter on this host, or an RS-232 port of an ESPHome device such as the Home Assistant Connect AUX-2. The MX119 uses 9600 baud.",
         "data": {
-          "serial_port": "Serial port or URL",
+          "serial_port": "Serial port",
           "baudrate": "Baud rate"
         }
       }

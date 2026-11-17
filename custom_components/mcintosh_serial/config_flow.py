@@ -53,12 +53,10 @@ class McIntoshConfigFlow(ConfigFlow, domain=DOMAIN):
                     title="McIntosh MX119",
                     data={CONF_SERIAL_PORT: port, CONF_BAUDRATE: baud},
                 )
+        serial_port = selector.SerialPortSelector()  # pyright: ignore[reportUnknownMemberType, reportUnknownVariableType]
         schema = vol.Schema(
             {
-                vol.Required(
-                    CONF_SERIAL_PORT,
-                    default=(user_input or {}).get(CONF_SERIAL_PORT, ""),
-                ): str,
+                vol.Required(CONF_SERIAL_PORT): serial_port,
                 vol.Required(
                     CONF_BAUDRATE, default=str(DEFAULT_BAUDRATE)
                 ): selector.SelectSelector(  # pyright: ignore[reportUnknownMemberType]
