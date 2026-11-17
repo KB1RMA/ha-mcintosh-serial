@@ -1,0 +1,37 @@
+name: Release
+
+# Releases are immutable, so a release's files can't be added once it's
+# published. Pushing a version tag builds the zip and creates the release
+# with the zip already attached: first as a draft, then published.
+#
+# The release notes are the tag's message, so write them in the annotated
+# tag. --cleanup=verbatim keeps Markdown headings, which git otherwise
+# strips as comments: git tag -s v1.2.3 --cleanup=verbatim -F notes.md
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check the tag matches the manifest version
+        run: |
+          version=$(jq -r .version custom_components/mcintosh_serial/manifest.json)
+          test "v$version" = "${GITHUB_REF_NAME}"
+      - name: Build zip
+        run: cd custom_components/mcintosh_serial && zip -r ../../mcintosh_serial.zip .
+      - name: Create the release with the zip
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" mcintosh_serial.zip \
+            --verify-tag --draft --title "${GITHUB_REF_NAME}" --notes-from-tag
+          gh release edit "${GITHUB_REF_NAME}" --draft=false

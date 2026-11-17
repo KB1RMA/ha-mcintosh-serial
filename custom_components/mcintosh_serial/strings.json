@@ -1,0 +1,39 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "McIntosh receiver",
+        "description": "Serial device path (for example /dev/ttyUSB0) or a pyserial URL such as socket://host:port. The MX119 uses 9600 baud.",
+        "data": {
+          "serial_port": "Serial port or URL",
+          "baudrate": "Baud rate"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not talk to the receiver on that port. Check the cable, the baud rate and that nothing else has the port open."
+    },
+    "abort": {
+      "already_configured": "This serial port is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "McIntosh options",
+        "description": "Volume 100 % in Home Assistant equals this many of the receiver's own volume steps. Input names are what appears in the source list.",
+        "data": {
+          "max_volume": "Receiver volume at 100 %",
+          "input_0": "Input 0 name",
+          "input_1": "Input 1 name",
+          "input_2": "Input 2 name",
+          "input_3": "Input 3 name",
+          "input_4": "Input 4 name",
+          "input_5": "Input 5 name",
+          "input_6": "Input 6 name",
+          "input_7": "Input 7 name"
+        }
+      }
+    }
+  }
+}
