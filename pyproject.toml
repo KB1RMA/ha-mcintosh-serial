@@ -18,11 +18,6 @@ dev = [
 # Dev tooling only: Home Assistant loads the integration from custom_components.
 package = false
 
-# Development against an unreleased library. Delete this block once mcintosh-serial
-# 0.1.0 is on PyPI (CI cannot see the sibling checkout), then run `uv lock`.
-[tool.uv.sources]
-mcintosh-serial = { path = "../mcintosh-serial", editable = true }
-
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"

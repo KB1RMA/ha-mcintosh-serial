@@ -60,8 +60,8 @@ uv run pyright
 uv run pytest            # 100% branch coverage is required
 ```
 
-The tests run the integration against the library's emulated MX119. While the library is unreleased it is
-taken from `../mcintosh-serial` (see `[tool.uv.sources]` in `pyproject.toml`).
+The tests run the integration against the library's emulated MX119. To develop against an unreleased
+library, temporarily add `[tool.uv.sources]` with `mcintosh-serial = { path = "../mcintosh-serial", editable = true }`.
 
 ## Licence
 

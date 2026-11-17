@@ -1141,7 +1141,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "mcintosh-serial", editable = "../mcintosh-serial" }]
+requires-dist = [{ name = "mcintosh-serial", specifier = "==0.1.0" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -1554,22 +1554,14 @@ wheels = [
 
 [[package]]
 name = "mcintosh-serial"
-version = "0.0.0"
-source = { editable = "../mcintosh-serial" }
+version = "0.1.0"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pyserial-asyncio-fast" },
 ]
-
-[package.metadata]
-requires-dist = [{ name = "pyserial-asyncio-fast", specifier = ">=0.16" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "pyright", specifier = "==1.1.414" },
-    { name = "pytest", specifier = "==9.0.3" },
-    { name = "pytest-asyncio", specifier = "==1.4.0" },
-    { name = "pytest-cov", specifier = "==7.1.0" },
-    { name = "ruff", specifier = "==0.17.5" },
+sdist = { url = "https://files.pythonhosted.org/packages/40/aa/a6db3c46071fd4ce98c6985c6536cb024392e0f9983cddc222a914d60b8c/mcintosh_serial-0.1.0.tar.gz", hash = "sha256:08169c442c7f2f474205404e969a26e8ae709a02060058b5642340a08c8531bb", size = 15820, upload-time = "2026-11-17T02:12:26.107Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/32/db/0337400308ffff8203c15012f4c2e3fe214bfe566ccbb8738c858f02ccf4/mcintosh_serial-0.1.0-py3-none-any.whl", hash = "sha256:c3fab389b6458b78e647f73594eaece21bb31e38bab0bdf584bcdd229369cbd4", size = 14230, upload-time = "2026-11-17T02:12:24.761Z" },
 ]
 
 [[package]]
