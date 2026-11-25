@@ -64,6 +64,68 @@ In Music Assistant, expose the media player through the Home Assistant plugin, t
 the receiver, go to its Player controls and choose this entity for power, volume and mute. Music Assistant can
 then wake the receiver and set its volume when playback starts.
 
+## Automation examples
+
+These assume an AUX-2 whose audio output feeds the receiver's DVD input, and an Apple TV on SAT. Replace the
+entity IDs and source names with yours; the source names are the ones in the media player's `source_list`.
+
+**Switch to the AUX-2 when it starts playing** (Music Assistant, AirPlay or Sendspin), whatever input the
+receiver was on:
+
+```yaml
+- alias: "McIntosh: switch to AUX-2 when it plays"
+  mode: single
+  triggers:
+    - trigger: state
+      entity_id: media_player.home_assistant_connect_aux_2_171184
+      to: "playing"
+  actions:
+    - action: media_player.turn_on
+      target:
+        entity_id: media_player.living_room_mcintosh_mx119
+    # The receiver takes a few seconds to wake up.
+    - wait_template: "{{ is_state('media_player.living_room_mcintosh_mx119', 'on') }}"
+      timeout: "00:00:15"
+      continue_on_timeout: false
+    - action: media_player.select_source
+      target:
+        entity_id: media_player.living_room_mcintosh_mx119
+      data:
+        source: "DVD"
+```
+
+**Switch to the Apple TV when it starts playing**, unless the AUX-2 is already playing music:
+
+```yaml
+- alias: "McIntosh: switch to Apple TV when it plays"
+  mode: single
+  triggers:
+    - trigger: state
+      entity_id: media_player.living_room
+      to: "playing"
+  conditions:
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: media_player.home_assistant_connect_aux_2_171184
+          state: "playing"
+  actions:
+    - action: media_player.turn_on
+      target:
+        entity_id: media_player.living_room_mcintosh_mx119
+    - wait_template: "{{ is_state('media_player.living_room_mcintosh_mx119', 'on') }}"
+      timeout: "00:00:15"
+      continue_on_timeout: false
+    - action: media_player.select_source
+      target:
+        entity_id: media_player.living_room_mcintosh_mx119
+      data:
+        source: "SAT"
+```
+
+Neither example touches volume, so the receiver wakes at the level it was last set to. To cap it, add a
+`media_player.volume_set` step after `select_source`.
+
 ## Development
 
 ```bash
